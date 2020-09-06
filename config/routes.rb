@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+    get "reservations" => "reservations#get_reservations_by_start_end"
+    post "reservations" => "reservations#create_reservation"
+    delete "reservations/:id" => "reservations#delete_reservation"
+
+    namespace :reservations do
+        get "calendar" => "calendar#get_calendar"
+        get "summary" => "summary#get_summary"
+    end
 end
