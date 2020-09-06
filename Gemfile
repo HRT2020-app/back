@@ -41,8 +41,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # xlsx用
-gem 'rubyzip'
-gem 'axlsx'
-gem 'axlsx_rails'
+# gem 'rubyzip', ">= 1.3.0"
+# gem 'axlsx'
+# gem 'axlsx_rails'
 
 gem 'jb'
