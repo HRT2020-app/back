@@ -11,11 +11,11 @@ definitions:
       name:
         type: string
         example: 伊藤鈴奈
-      in:
+      in_room:
         type: string
         format: date-time
         example: "2020-08-24T10:00:00.000Z"
-      out:
+      out_room:
         type: string
         format: date-time
         example: "2020-08-24T19:30:00.000Z"
@@ -24,11 +24,11 @@ definitions:
       name:
         type: string
         example: 伊藤鈴奈
-      in:
+      in_room:
         type: string
         format: date-time
         example: "2020-08-24T10:00:00.000Z"
-      out:
+      out_room:
         type: string
         format: date-time
         example: "2020-08-24T19:30:00.000Z"
