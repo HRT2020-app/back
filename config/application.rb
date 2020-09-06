@@ -22,6 +22,8 @@ module HrtAppsRails
 
     config.api_only = true
 
+    config.time_zone = 'Asia/Tokyo'
+
     config.generators do |g|
       g.skip_routes true
     end
