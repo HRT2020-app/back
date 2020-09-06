@@ -1,0 +1,5 @@
+json = {
+    reservations: @reservations.map{|p| {"name": p.name, "in_room": p.in_room, "out_room": p.out_room}}
+}
+
+json

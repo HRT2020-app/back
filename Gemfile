@@ -44,3 +44,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rubyzip'
 gem 'axlsx'
 gem 'axlsx_rails'
+
+gem 'jb'
