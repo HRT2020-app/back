@@ -14,11 +14,11 @@ definitions:
       in_room:
         type: string
         format: date-time
-        example: "2020-08-24T10:00:00.000Z"
+        example: "2020-08-24T01:00:00.000Z"
       out_room:
         type: string
         format: date-time
-        example: "2020-08-24T19:30:00.000Z"
+        example: "2020-08-24T10:30:00.000Z"
   ReservationBody:
     properties:
       name:
@@ -27,17 +27,17 @@ definitions:
       in_room:
         type: string
         format: date-time
-        example: "2020-08-24T10:00:00.000Z"
+        example: "2020-08-24T01:00:00.000Z"
       out_room:
         type: string
         format: date-time
-        example: "2020-08-24T19:30:00.000Z"
+        example: "2020-08-24T10:30:00.000Z"
   ReservationsParTime:
     properties:
       start:
         type: string
         format: date-time
-        example: "2020-08-24T19:30:00.000Z"
+        example: "2020-08-24T01:00:00.000Z"
       number:
         type: integer
         example: 1
@@ -131,15 +131,9 @@ paths:
     get:
       description: excelファイルダウンロード
       parameters:
-        - name: start
+        - name: month
           in: query
-          description: 開始日(YYYY-MM-DD)
-          required: true
-          type: string
-          format: date
-        - name: end
-          in: query
-          description: 終了日(YYYY-MM-DD)
+          description: 開始日(YYYY-MM)
           required: true
           type: string
           format: date

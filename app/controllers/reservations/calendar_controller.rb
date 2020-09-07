@@ -1,13 +1,12 @@
-class Reservations::CalendarController < ApplicationController
-    def get_calendar
-        calendar = {
-            "reservations": [
-              {
-                "start": "2020-08-24T19:30:00.000Z",
-                "number": 1
-              }
-            ]
-          }
-        render :json => calendar
+class Reservations::CalendarController < Reservations::Base
+  def get_calendar_by_start_end
+    date_range = date_range_params
+    if date_valid?(date_range[:start]) && date_valid?(date_range[:end])
+      @calendar = Reservation.create_calendar(date_range[:start], date_range[:end])
+
+      render 'reservations/calendar'
+    else
+      response_bad_request
     end
+  end
 end
