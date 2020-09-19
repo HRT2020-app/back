@@ -14,7 +14,7 @@ class Reservations::TopController < Reservations::Base
     reservation = Reservation.new(reservation_params)
     if reservation.save
       massage = {
-        "massage": 'Create Success'
+        "message": 'Create Success'
       }
       render json: massage
     else
@@ -27,7 +27,7 @@ class Reservations::TopController < Reservations::Base
     if reservation
       if reservation.destroy
         massage = {
-          "massage": 'Destroy Success'
+          "message": 'Destroy Success'
         }
         render json: massage
       else
@@ -39,6 +39,7 @@ class Reservations::TopController < Reservations::Base
   end
 
   private def reservation_params
+    p params
     params.require(:reservation).permit(:name, :in_room, :out_room)
   end
 end
