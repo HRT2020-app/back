@@ -4,15 +4,15 @@ class Reservation < ApplicationRecord
   A_DAY = 1.to_f
 
   def self.get_reservations(start_date_param, end_date_param)
-    start_date = DateTime.parse(start_date_param)
-    end_date = DateTime.parse(end_date_param) + A_DAY - SECOND
+    start_date = start_date_param.in_time_zone
+    end_date = end_date_param.in_time_zone + A_DAY - SECOND
 
     Reservation.where(['in_room <= ? and out_room >= ?', end_date, start_date])
   end
 
   def self.create_calendar(start_date_param, end_date_param)
-    start_date = DateTime.parse(start_date_param)
-    end_date = DateTime.parse(end_date_param) + A_DAY - SECOND
+    start_date = start_date_param.in_time_zone
+    end_date = end_date_param.in_time_zone + A_DAY - SECOND
 
     in_out_datetime = where(['in_room <= ? and out_room >= ?', end_date, start_date]).pluck(:in_room, :out_room)
 
@@ -23,15 +23,11 @@ class Reservation < ApplicationRecord
 
   def self.create_summary_xlsx(month)
     y, m = month.split('-').map(&:to_i)
-    first_day_of_month = DateTime.new(y, m, 1)
+    first_day_of_month = DateTime.new(y, m, 1, 0, 0, 0, '+09:00')
     last_day_of_mounth = first_day_of_month.end_of_month
-
-    p last_day_of_mounth
 
     reservations =
       Reservation.where(['in_room <= ? and out_room >= ?', last_day_of_mounth, first_day_of_month]).pluck(:name, :in_room, :out_room)
-
-    p reservations
 
     reservations_dict = reservations.group_by { |reservation| reservation[0] }
                                     .map { |name, reservation| [name, reservation.group_by { |reservation| reservation[1].to_date }] }.to_h
