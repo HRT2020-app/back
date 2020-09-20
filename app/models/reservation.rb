@@ -5,14 +5,14 @@ class Reservation < ApplicationRecord
 
   def self.get_reservations(start_date_param, end_date_param)
     start_date = start_date_param.in_time_zone
-    end_date = end_date_param.in_time_zone + A_DAY - SECOND
+    end_date = end_date_param.in_time_zone.tomorrow - 1.second
 
     Reservation.where(['in_room <= ? and out_room >= ?', end_date, start_date])
   end
 
   def self.create_calendar(start_date_param, end_date_param)
     start_date = start_date_param.in_time_zone
-    end_date = end_date_param.in_time_zone + A_DAY - SECOND
+    end_date = end_date_param.in_time_zone.tomorrow - 1.second
 
     in_out_datetime = where(['in_room <= ? and out_room >= ?', end_date, start_date]).pluck(:in_room, :out_room)
 
