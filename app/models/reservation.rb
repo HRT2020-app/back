@@ -76,7 +76,7 @@ class Reservation < ApplicationRecord
         write_dict[name] = []
       end
     end
-    write_week_segment(work_sheet, write_days, week_of_month, write_dict, row)
+    write_week_segment(work_sheet, write_days, week_of_month, write_dict, row) if write_days.present?
 
     work_book
   end
